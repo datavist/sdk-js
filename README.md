@@ -1,5 +1,5 @@
 ## 📚  Datavist SDK – Quick‑Start Guide  
-You will need to create a Datavist account. It only takes a few seconds and page extractions cost 1 cent per page--pay-as-you-go.
+You will need to create a Datavist (https://datavist.xyz) account. It only takes a few seconds and page extractions cost 1 cent per page--pay-as-you-go.
 ---
 
 ## 1️⃣ Getting Started  
@@ -301,4 +301,5 @@ When you runbasic example** (or any of the “create” calls) you will see some
   whitelist: Set(6) { 'title', 'prompt', 'frequency', 'email', 'webhook', 'urls' }
 }
 ```
+
 
