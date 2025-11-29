@@ -1,7 +1,7 @@
 ## 📚  Datavist SDK – Quick‑Start Guide  
-You will need to create a [Datavist](https://datavist.xyz) account. It only takes a few seconds. Page extractions cost 1 cent per page. Deposit as little as $1 to get started and pay-as-you-go.
-
 Datavist is an AI software-as-a-service that can reliably extract and monitor data from complex pages (modals, tables, etc.).
+
+You will need to create a [Datavist](https://datavist.xyz) account to use the SDK (Software Development Kit). It only takes a few seconds. Extractions cost 1 cent per page. Deposit as little as $1 to get started and pay-as-you-go.
 
 ---
 
@@ -243,6 +243,7 @@ Project {
   whitelist: Set(6) { 'title', 'prompt', 'frequency', 'email', 'webhook', 'urls' }
 }
 ```
+
 
 
 
