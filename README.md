@@ -1,7 +1,7 @@
 ## 📚  Datavist SDK – Quick‑Start Guide  
-Datavist is an AI software-as-a-service that can reliably extract and monitor data from complex pages (modals, tables, etc.).
+You will need to create a [Datavist](https://datavist.xyz) account. It only takes a few seconds. Page extractions cost 1 cent per page. Deposit as little as $1 to get started and pay-as-you-go.
 
-You will need to create a [Datavist](https://datavist.xyz) account to use the SDK (Software Development Kit). It only takes a few seconds. Extractions cost 1 cent per page. Deposit as little as $1 to get started and pay-as-you-go.
+Datavist is an AI software-as-a-service that can reliably extract and monitor data from complex pages (modals, tables, etc.).
 
 ---
 
@@ -15,7 +15,7 @@ yarn add @datavist/sdk
 
 ```js
 // src/index.js
-import { DatavistClient, Project } from "@datavist/sdk";
+import { DatavistClient } from "@datavist/sdk";
 
 const client = new DatavistClient({
   apiKey: "YOUR_API_KEY",                 // <-- replace with yours
@@ -75,26 +75,6 @@ schemaProj.start()
 ```
 
 *Returned type:* `Project` (flavour `"schema"`).   Only the fields listed in `UpdatableSchemaFields` can be edited later (`title`,doc_type`, `properties`, `extraction_scope`, `frequency`, `email`, `webhook`, `max_pagination_pages`, `max_details_pages`).
-
-
-### 3.3 Create Project With Workflow  
-
-```js
-const workflowProj = await client.createProjectWithWorkflow({
-  title: "Workflow Demo",
-  urls: ["https://example.com/articles"],
-  prompt: "extract the article headline and summary.",
-  doc_type: "article",
-  extraction_scope: "auto",
-  properties: ['title', 'summary'],
-  frequency: "weekly",
-});
-console.log(workflowProj.id);
-
-workflowProj.start()
-```
-
-*Returned type:* `Project` (flavour `"workflow"`).
 
 
 
@@ -203,7 +183,30 @@ console.log("Fetched project title:", fetched.title);
 ```js
 const proj = new Project(client, fetched, "prompt", ["https://example.com/"]);
 ```
+### 5.7 Notifications
 
+```js
+const proj = await client.createProjectWithPrompt({
+  title: "Prompt Demo",
+  urls: ["https://example.com/"],
+  prompt: "describe the page.",
+  frequency: "once",
+  notifications: {email: "you@example.com", "webhook": "https://example.com/success"},                 // optional notifications
+});
+```
+
+Alternatively...
+
+```js
+const proj = await client.createProjectWithPrompt({
+  title: "Prompt Demo",
+  urls: ["https://example.com/"],
+  prompt: "describe the page.",
+  frequency: "once",
+  email: "you@example.com",
+  webhook: "https://example.com/success",
+});
+```
 
 ## 6️⃣ Project Object – Example  
 
@@ -243,7 +246,6 @@ Project {
   whitelist: Set(6) { 'title', 'prompt', 'frequency', 'email', 'webhook', 'urls' }
 }
 ```
-
 
 
 
